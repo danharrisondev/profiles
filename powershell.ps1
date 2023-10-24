@@ -1,7 +1,6 @@
 Function mainify
 {
-    $branches = git branch
-    foreach ($branch in $branches)
+    foreach ($branch in git branch)
     {
         if ($branch -ne "* master") {
             git branch -D $branch.Trim()
