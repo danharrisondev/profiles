@@ -9,7 +9,7 @@ Function mainify
 
     foreach ($branch in git branch)
     {
-        if ($branch.Trim() -notin "* master", "* main", "master", "main") {
+        if ($branch.Trim() -notin "* master", "* main") {
             git branch -d $branch.Trim()
         }
     }
