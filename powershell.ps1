@@ -1,5 +1,7 @@
 Function mainify
 {
+    param([switch]$force)
+
     $currentBranch = git branch --show-current
 
     if ($currentBranch -notin "master", "main") {
@@ -10,7 +12,11 @@ Function mainify
     foreach ($branch in git branch)
     {
         if ($branch.Trim() -notin "* master", "* main") {
-            git branch -d $branch.Trim()
+            if ($force) {
+                git branch -D $branch.Trim()
+            } else {
+                git branch -d $branch.Trim()
+            }
         }
     }
 }
